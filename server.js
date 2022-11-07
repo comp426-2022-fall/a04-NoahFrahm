@@ -1,9 +1,13 @@
 import roll from './lib/roll';
+import minimist from "minimist";
+
 
 const express = require('express')
 const app = express()
 
-const port = 5000
+// parse command line args
+const args = minimist(process.argv.slice(2))
+const port = args.port ? args.port: 5000
 
 app.use(express.json());
 app.use(express.urlencoded());
