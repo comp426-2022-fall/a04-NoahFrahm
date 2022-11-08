@@ -1,26 +1,24 @@
-import roll from './lib/roll';
+import roll from "./lib/roll.js"
 import express from 'express';
 import minimist from "minimist";
 
 
-const express = require('express')
+// const express = require('express')
 const app = express()
 
 // parse command line args
 const args = minimist(process.argv.slice(2))
 const port = args.port ? args.port: 5000
+console.log('port is: ' + port);
+// app.use(express.json());
+// app.use(express.urlencoded());
 
-app.use(express.json());
-app.use(express.urlencoded());
 
 
-app.get('*', (req, res, next) => {
-    res.status(404).send('404 NOT FOUND')
-})
 
-app.get('/', (req, res, next) => {
-    res.send('Hello, world!')
-})
+// app.get('/', (req, res, next) => {
+//     res.send('Hello, world!')
+// })
 
 
 app.post('/app/', (req, res, next) => {
@@ -54,7 +52,7 @@ app.post('/app/roll/:sides/', (req, res, next) => {
         sides = req.params.sides
     }
     res.setHeader('Content-Type', 'application/json')
-    res.json(roll(sides, 2, 1));
+    res.status(200).json(roll(sides, 2, 1));
 })
 
 
@@ -70,7 +68,7 @@ app.post('/app/roll/:sides/:dice/', (req, res, next) => {
     }
 
     res.setHeader('Content-Type', 'application/json')
-    res.json(roll(sides, dice, 1));
+    res.status(200).json(roll(sides, dice, 1));
 })
 
 
@@ -88,9 +86,13 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     if (req.params.rolls) {
         rolls = req.params.rolls
     }
-    
+
     res.setHeader('Content-Type', 'application/json')
-    res.json(roll(sides, dice, rolls));
+    res.status(200).json(roll(sides, dice, rolls));
+})
+
+app.get('*', (req, res, next) => {
+    res.status(404).send('404 NOT FOUND')
 })
 
 
