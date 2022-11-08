@@ -9,19 +9,21 @@ const app = express()
 // parse command line args
 const args = minimist(process.argv.slice(2))
 const port = args.port ? args.port: 5000
+// console.log('por');
 console.log('port is: ' + port);
-// app.use(express.json());
-// app.use(express.urlencoded());
-
 
 
 
 // app.get('/', (req, res, next) => {
 //     res.send('Hello, world!')
 // })
+app.get('*', (req, res, next) => {
+    res.status(404).send('404 NOT FOUND')
+})
 
 
 app.post('/app/', (req, res, next) => {
+    console.log('rooty tooty');
     res.status(200).send('200 OK')
 })
 
@@ -41,7 +43,7 @@ app.post('/app/roll/', (req, res, next) => {
         rolls = req.body.rolls
     }
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).json(roll(sides, dice, rolls));
+    res.status(200).send(json(roll(sides, dice, rolls)));
 })
 
 
@@ -52,7 +54,7 @@ app.post('/app/roll/:sides/', (req, res, next) => {
         sides = req.params.sides
     }
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).json(roll(sides, 2, 1));
+    res.status(200).send(json(roll(sides, 2, 1)));
 })
 
 
@@ -68,7 +70,7 @@ app.post('/app/roll/:sides/:dice/', (req, res, next) => {
     }
 
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).json(roll(sides, dice, 1));
+    res.status(200).send(json(roll(sides, dice, 1)));
 })
 
 
@@ -88,11 +90,7 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     }
 
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).json(roll(sides, dice, rolls));
-})
-
-app.get('*', (req, res, next) => {
-    res.status(404).send('404 NOT FOUND')
+    res.status(200).send(json(roll(sides, dice, rolls)));
 })
 
 
