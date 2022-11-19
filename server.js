@@ -9,14 +9,14 @@ app.use(express.urlencoded({extended: true}));
 
 // parse command line args
 const args = minimist(process.argv.slice(2))
-const port = args.port ? args.port: 5000
+const port = args.port || 5000;
 // console.log('por');
-console.log('port is: ' + port);
+// console.log('port is: ' + port);
 
 
 app.post('/app/', (req, res, next) => {
     // console.log('rooty tooty');
-    res.status(200).send('200 OK')
+    res.status(200).send("200 OK");
 })
 
 
