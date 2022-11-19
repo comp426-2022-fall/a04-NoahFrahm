@@ -1,3 +1,5 @@
+#!/use/bin/env node
+
 import roll from "./lib/roll.js"
 import express from 'express';
 import minimist from "minimist";
@@ -35,7 +37,7 @@ app.post('/app/roll/', (req, res, next) => {
         rolls = req.body.rolls
     }
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).send(json(roll(sides, dice, rolls)));
+    res.status(200).send(roll(sides, dice, rolls));
 })
 
 
@@ -46,7 +48,7 @@ app.post('/app/roll/:sides/', (req, res, next) => {
         sides = req.params.sides
     }
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).send(json(roll(sides, 2, 1)));
+    res.status(200).send(roll(sides, 2, 1));
 })
 
 
@@ -62,7 +64,7 @@ app.post('/app/roll/:sides/:dice/', (req, res, next) => {
     }
 
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).send(json(roll(sides, dice, 1)));
+    res.status(200).send(roll(sides, dice, 1));
 })
 
 
@@ -82,7 +84,7 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     }
 
     res.setHeader('Content-Type', 'application/json')
-    res.status(200).send(json(roll(sides, dice, rolls)));
+    res.status(200).send(roll(sides, dice, rolls));
 })
 
 app.post('*', (req, res) => {
