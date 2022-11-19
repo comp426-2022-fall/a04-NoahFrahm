@@ -22,7 +22,7 @@ app.get('/app/', (req, res) => {
 })
 
 
-app.get('/app/roll/', (req, res, next) => {
+app.post('/app/roll/', (req, res, next) => {
     const sides = 6;
     const dice = 2;
     const rolls = 1;
