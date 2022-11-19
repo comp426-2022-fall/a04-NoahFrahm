@@ -14,7 +14,7 @@ const port = args.port || 5000;
 // console.log('port is: ' + port);
 
 
-app.post('/app/', (req, res, next) => {
+app.post('/app/', (req, res) => {
     // console.log('rooty tooty');
     res.status(200).send("200 OK");
 })
@@ -85,7 +85,10 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     res.status(200).send(json(roll(sides, dice, rolls)));
 })
 
-
+app.post('*', (req, res) => {
+    // console.log('rooty tooty');
+    res.status(404).send("404 NOT FOUND");
+})
 // app.listen(port, () => {
 //     console.log("Server listening on port " + port)
 // })
