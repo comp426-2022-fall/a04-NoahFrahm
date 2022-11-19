@@ -5,6 +5,7 @@ import minimist from "minimist";
 
 // const express = require('express')
 const app = express()
+app.use(express.urlencoded({extended: true}));
 
 // parse command line args
 const args = minimist(process.argv.slice(2))
@@ -13,17 +14,8 @@ const port = args.port ? args.port: 5000
 console.log('port is: ' + port);
 
 
-
-// app.get('/', (req, res, next) => {
-//     res.send('Hello, world!')
-// })
-app.get('*', (req, res, next) => {
-    res.status(404).send('404 NOT FOUND')
-})
-
-
 app.post('/app/', (req, res, next) => {
-    console.log('rooty tooty');
+    // console.log('rooty tooty');
     res.status(200).send('200 OK')
 })
 
@@ -94,6 +86,8 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 })
 
 
-app.listen(port, () => {
-    console.log("Server listening on port " + port)
-})
+// app.listen(port, () => {
+//     console.log("Server listening on port " + port)
+// })
+
+app.listen(port);
