@@ -22,6 +22,14 @@ app.get('/app/', (req, res) => {
 })
 
 
+app.get('/app/roll/', (req, res, next) => {
+    const sides = 6;
+    const dice = 2;
+    const rolls = 1;
+    res.setHeader('Content-Type', 'application/json')
+    res.status(200).send(roll(sides, dice, rolls));
+})
+
 app.post('/app/roll/', (req, res, next) => {
     const sides = 6;
     const dice = 2;
