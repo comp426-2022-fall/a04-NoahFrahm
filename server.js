@@ -23,17 +23,17 @@ app.get('/app/', (req, res) => {
 
 
 app.get('/app/roll/', (req, res, next) => {
-    const sides = 6;
-    const dice = 2;
-    const rolls = 1;
+    let sides = 6;
+    let dice = 2;
+    let rolls = 1;
     res.setHeader('Content-Type', 'application/json')
     res.status(200).send(roll(sides, dice, rolls));
 })
 
 app.post('/app/roll/', (req, res, next) => {
-    const sides = 6;
-    const dice = 2;
-    const rolls = 1;
+    let sides = 6;
+    let dice = 2;
+    let rolls = 1;
 
     if (req.body.sides) {
         sides = parseInt(req.body.sides);
@@ -50,7 +50,7 @@ app.post('/app/roll/', (req, res, next) => {
 
 
 app.get('/app/roll/:sides/', (req, res, next) => {
-    const sides = 6;
+    let sides = 6;
 
     if (req.params.sides) {
         sides = parseInt(req.params.sides);
@@ -61,8 +61,8 @@ app.get('/app/roll/:sides/', (req, res, next) => {
 
 
 app.get('/app/roll/:sides/:dice/', (req, res, next) => {
-    const sides = 6;
-    const dice = 2;
+    let sides = 6;
+    let dice = 2;
 
     if (req.params.sides) {
         sides = parseInt(req.params.sides);
@@ -77,9 +77,9 @@ app.get('/app/roll/:sides/:dice/', (req, res, next) => {
 
 
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
-    const sides = 6;
-    const dice = 2;
-    const rolls = 1;
+    let sides = 6;
+    let dice = 2;
+    let rolls = 1;
 
     if (req.params.sides) {
         sides = parseInt(req.params.sides);
