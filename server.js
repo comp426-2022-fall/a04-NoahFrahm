@@ -16,13 +16,13 @@ const port = args.port || 5000;
 // console.log('port is: ' + port);
 
 
-app.post('/app/', (req, res) => {
+app.get('/app/', (req, res) => {
     // console.log('rooty tooty');
     res.status(200).send("200 OK");
 })
 
 
-app.post('/app/roll/', (req, res, next) => {
+app.get('/app/roll/', (req, res, next) => {
     const sides = 6;
     const dice = 2;
     const rolls = 1;
@@ -41,7 +41,7 @@ app.post('/app/roll/', (req, res, next) => {
 })
 
 
-app.post('/app/roll/:sides/', (req, res, next) => {
+app.get('/app/roll/:sides/', (req, res, next) => {
     const sides = 6;
 
     if (req.params.sides) {
@@ -52,7 +52,7 @@ app.post('/app/roll/:sides/', (req, res, next) => {
 })
 
 
-app.post('/app/roll/:sides/:dice/', (req, res, next) => {
+app.get('/app/roll/:sides/:dice/', (req, res, next) => {
     const sides = 6;
     const dice = 2;
 
@@ -68,7 +68,7 @@ app.post('/app/roll/:sides/:dice/', (req, res, next) => {
 })
 
 
-app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
+app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     const sides = 6;
     const dice = 2;
     const rolls = 1;
@@ -87,7 +87,7 @@ app.post('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     res.status(200).send(roll(sides, dice, rolls));
 })
 
-app.post('*', (req, res) => {
+app.get('*', (req, res) => {
     // console.log('rooty tooty');
     res.status(404).send("404 NOT FOUND");
 })
